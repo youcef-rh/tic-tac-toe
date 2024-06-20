@@ -4,9 +4,9 @@ function Gameboard() {
   const colum = 3;
 
   for (let i = 0; i < row; i++) {
-    this.gameboard[i] = [];
+    gameboard[i] = [];
     for (let j = 0; j < colum; j++) {
-      this.gameboard[i].push(square());
+      gameboard[i].push(square());
     }
   }
 
@@ -16,10 +16,10 @@ function Gameboard() {
     const availableSquare = gameboard
       .filter((row) => row[colum].getValue() === 0)
       .map((row) => row[colum]);
-  };
-  if (!availableSquare.length) return;
-  board[row][colum].addToken(player);
 
+    if (!availableSquare.length) return;
+    board[row][colum].addToken(player);
+  };
   const printBoard = () => {
     const boardWithSquars = gameboard.map((board) =>
       board.map((square) => square.getValue())
@@ -56,4 +56,4 @@ function GameControlls(playerOne = "player One", playerTwo = "player Two") {
   return { activePlayer };
 }
 const game = Gameboard();
-game();
+game.printBoard();
